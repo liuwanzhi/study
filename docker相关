@@ -1,0 +1,3 @@
+1启动registry命令
+docker run -i -t --name registry-instance -e SETTINGS_FLAVOR=local -e SEARCH_BACKEND=sqlalchemy  -e sqlalchemy_index_database=sqlite:////tmp/docker-registry.db -e REGISTRY_PORT=5010 -p 5010:5010
+docker run -i -t --name registry-instance  -e SEARCH_BACKEND=sqlalchemy -e SQLALCHEMY_INDEX_DATABASE:sqlite:////tmp/docker-registry.db -e SETTINGS_FLAVOR=local -e REGISTRY_PORT=5010 -p 5010:5010 registry
