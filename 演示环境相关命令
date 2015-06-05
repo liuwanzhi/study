@@ -1,0 +1,71 @@
+启动命令
+docker run -d -e ENV_DOCKER_REGISTRY_HOST=186.100.21.171 -e ENV_DOCKER_REGISTRY_PORT=5010  -p 8083:80 konradkleine/docker-registry-frontend
+
+
+docker run -i -t --name registry-instance  -e SEARCH_BACKEND=sqlalchemy -e SQLALCHEMY_INDEX_DATABASE:sqlite:////tmp/docker-registry.db -e SETTINGS_FLAVOR=local -e REGISTRY_PORT=5010 -p 5010:5010 registry
+
+neutron security-group-rule-create default --direction ingress --ethertype IPv4 --protocol tcp --port-range-min 22 --port 8
+
+default --direction ingress --ethertype IPv4 --protocol tcp --port-range-min 22 --port-range-max 22 --remote-ip-prefix 0.0.0.0/0
+
+
+neutron security-group-rule-create default --direction ingress --ethertype IPv4 --protocol tcp --port-range-min 8083 --port-range-max 22 --remote-ip-prefix 0.0.0.0/0
+
+iptables -t nat -A PREROUTING -d 186.100.40.118 -p tcp --dport 8083 -j DNAT --to-destination 172.28.12.20:8083
+
+
+
+sudo docker rm -f registry-instance
+sudo docker run -d --name registry-instance --restart="always" -e SETTINGS_FLAVOR=local -e SEARCH_BACKEND=sqlalchemy  -e REGISTRY_PORT=5010  registry
+
+sudo docker rm -f docker-registry-frontend 
+sudo docker run -d --name docker-registry-frontend --restart="always" --link=registry-instance:registry -e ENV_DOCKER_REGISTRY_HOST=127.0.0.1 -p 8083:80 -e ENV_DOCKER_REGISTRY_PORT=5010     konradkleine/docker-registry-frontend
+
+
+curl -i http://172.28.12.20:5010/v1/search
+
+curl -i http://172.28.12.20:8083
+
+
+
+1780  2015-06-05 10:46:01 root cp /root/.ssh/id_rsa liu
+ 1781  2015-06-05 10:46:02 root ls
+ 1782  2015-06-05 10:48:11 root cd liu
+ 1783  2015-06-05 10:48:11 root ls
+ 1784  2015-06-05 10:48:45 root nova keypair-add --pub-key id_rsa.pub registry_key
+ 1785  2015-06-05 10:48:56 root nova keypair-list
+ 1786  2015-06-05 10:49:01 root ll
+ 1787  2015-06-05 10:49:16 root glance image-list
+ 1788  2015-06-05 10:49:30 root nova flavor-list
+ 1789  2015-06-05 10:49:40 root neutron net-list
+ 1790  2015-06-05 10:50:45 root nova boot --help
+ 1791  2015-06-05 10:50:58 root nova list
+ 1792  2015-06-05 10:51:04 root nova help boot
+ 1793  2015-06-05 10:51:32 root nova keypar-list
+ 1794  2015-06-05 10:51:35 root ls
+ 1795  2015-06-05 10:51:36 root nova keypair-list
+ 1797  2015-06-05 10:52:23 root nova boot --key-name registry_key --image f21-d --flavor m1.small  --nic net-id=a6319d63-9b00-4978-85fe-4760b991f1b6  registry
+ 1798  2015-06-05 10:52:28 root nova list
+ 1799  2015-06-05 10:52:47 root nova list
+ 1800  2015-06-05 10:53:11 root ssh 172.28.12.20
+ 1801  2015-06-05 10:53:31 root ssh fedora@172.28.12.20
+ 1802  2015-06-05 10:54:03 root ssh -i id_rsa  172.28.12.20
+ 1803  2015-06-05 10:54:30 root ssh -i id_rsa  fedora@172.28.12.20
+ 1804  2015-06-05 10:51:37 root vi user.sh
+ 1805  2015-06-05 11:04:50 root mv user.sh docker_config.sh
+ 1806  2015-06-05 11:08:05 root vi docker_config.sh
+ 1807  2015-06-05 11:15:04 root ls
+ 1808  2015-06-05 11:15:09 root vi heat_tm
+ 1809  2015-06-05 11:15:18 root vi heat_temp/
+ 1810  2015-06-05 11:15:25 root cd heat_temp/
+ 1811  2015-06-05 11:15:25 root ls
+ 1812  2015-06-05 10:54:55 root ssh  fedora@172.28.12.20
+ 1813  2015-06-05 11:21:22 root ssh  fedora@172.28.12.20
+ 1814  2015-06-05 11:27:55 root nova list
+ 1815  2015-06-05 11:28:05 root ssh  fedora@172.28.12.20
+ 1816  2015-06-05 11:31:10 root ls
+ 1817  2015-06-05 11:31:39 root ls
+ 1818  2015-06-05 11:31:42 root cd/ h
+ 1819  2015-06-05 11:31:45 root cd /home/
+ 1820  2015-06-05 11:31:45 root ls
+ 1821  2015-06-05 11:32:08 root history
