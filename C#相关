@@ -1,1 +1,3 @@
+
+界面上输出相关信息 
 System.Windows.Forms.MessageBox.Show("Hello world","Message",MessageBoxButtons.OKCancel);
