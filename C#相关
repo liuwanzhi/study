@@ -1,3 +1,13 @@
 
 界面上输出相关信息 
 System.Windows.Forms.MessageBox.Show("Hello world","Message",MessageBoxButtons.OKCancel);
+
+
+C#画图代码 msdn示例代码
+
+https://code.msdn.microsoft.com/Samples-Environments-for-b01e9c61
+
+
+sample
+https://msdn.microsoft.com/zh-cn/library/ms228344%28v=vs.90%29.aspx
+
