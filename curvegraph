@@ -1,0 +1,114 @@
+   private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(560, 52);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "产生数据";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(749, 262);
+            this.Controls.Add(this.button1);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button1;
+
+    }
+    
+    
+    
+    
+    public partial class Form1 : Form
+    {
+       
+        ZedGraphControl zedGraphControl1 = new ZedGraphControl();
+       
+        int staticNum = 0;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            // 在坐标(40,40)处创建一个新图形, 大小为 600x400
+            zedGraphControl1.GraphPane= new GraphPane(new Rectangle(40, 40, 600, 400),
+                "My Test Graph\n(For CodeProject Sample)",
+                "My X Axis",
+                "My Y Axis");
+
+
+            //zedGraphControl1.GraphPane.AxisChange(this.CreateGraphics());
+
+            
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            zedGraphControl1.GraphPane.Draw(e.Graphics);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            zedGraphControl1.GraphPane = new GraphPane(new Rectangle(40, 40, 600, 400),
+    "My Test Graph\n(For CodeProject Sample)",
+    "My X Axis",
+    "My Y Axis");
+
+            double x, y1, y2;
+            PointPairList list1 = new PointPairList();
+            PointPairList list2 = new PointPairList();
+            staticNum++;
+            for (int i = 0; i < 36; i++)
+            {
+                x = (double)i + 5 + staticNum;
+                y1 = x%36;
+                // y2 = 3.0 * (1.5 + Math.Sin((double)i * 0.2));
+                list1.Add(x, y1);
+                // list2.Add(x, y2);
+            }
+
+            // 创建红色的菱形曲线
+            // 标记, 图中的 "Porsche" 
+            LineItem myCurve = zedGraphControl1.GraphPane.AddCurve("Porsche", list1, Color.Red, SymbolType.Diamond);
+
+            // 创建蓝色的圆形曲线
+            // 标记, 图中的 "Piper"    
+         
+
+
+            // 在数据变化时绘制图形
+           // zedGraphControl1.GraphPane.AxisChange(this.CreateGraphics());
+            zedGraphControl1.AxisChange();
+            zedGraphControl1.Refresh();
+            
+        }
+    }
