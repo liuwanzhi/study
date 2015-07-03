@@ -3,3 +3,5 @@ EventStreamHander.cs
 public class TradeOpened ,TradeReduced 分别代表什么类型的trade
 
 3 TransactionSession newSession是什么原理
+
+orderRequest newOrder 中同步和异步区别
