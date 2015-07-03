@@ -1,3 +1,5 @@
 EventStreamHander.cs
 
 public class TradeOpened ,TradeReduced 分别代表什么类型的trade
+
+3 TransactionSession newSession是什么原理
