@@ -5,3 +5,12 @@ public class TradeOpened ,TradeReduced 分别代表什么类型的trade
 3 TransactionSession newSession是什么原理
 
 orderRequest newOrder 中同步和异步区别
+
+
+关于项目的一些疑问
+1 投资方相关信息，投资方式，投资额度，投资时间
+2 全职和兼职区别，需要开发哪些东西
+3需要我投资多钱什么时候投资
+4 为什么要成立公司，成立公司的意义？
+5策略的资金容量，是不是应该先运行一段时间？
+6 平时策略怎么监控？如果后期不能很好的盈利，或者公司一直亏损，需要怎么办
