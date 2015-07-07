@@ -1,0 +1,26 @@
+class AccountData  账号实体类
+ 用户账号 id 是用户accountID name 为程序中标志号
+ 
+ 
+ class AccountManager 账号管理类
+ 
+    Dictionary<string, List<AccountData>> _accounts  string：是账号类型（price, real, Real_LX） 
+                                                      List<AccountData>:是某个类型的账号集合
+    
+    
+  class GlobalStatus： 全局状态标志类
+    bool StreamPriceRunning 标志pricerequest是否正在运行
+    boll StreamEventRunning 标志 eventrequest是否ok
+    
+  PendingOrders：处理订单事件的类 需详细补充
+    主要有以下方法
+      List<Order> GetOrders(int accountId)
+      SetOrders(int accountId, List<Order> orders)
+      AddOrder(int accountId, Order order)
+      RemoveOrder(int accountId, Order order)
+      UpdateOrder(int accountId, Order order)
+      
+    class AccountRefersher ： 需要详细看
+    
+    
+    
