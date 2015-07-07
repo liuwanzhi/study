@@ -1,10 +1,23 @@
 EventStreamHander.cs
 
 public class TradeOpened ,TradeReduced 分别代表什么类型的trade
+tradeOpenen仓位增加 TradeReduced仓位减少
+
+
 
 3 TransactionSession newSession是什么原理
 
 orderRequest newOrder 中同步和异步区别
+
+
+ StreamPriceReceiver
+ 
+ StreamEventReceiver
+ 
+ 
+ PriceEntity 中的ask 和bid代表什么？
+ 
+ 
 
 
 关于项目的一些疑问
