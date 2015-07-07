@@ -11,6 +11,7 @@ orderRequest newOrder 中同步和异步区别
 
 
  StreamPriceReceiver
+ 这个是程序主动调用，还是由服务器推送过来的？
  HandlerMeesage中的map.ContainsKey("tick") 这个tick代表什么意思？
  
  StreamEventReceiver
