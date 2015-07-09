@@ -24,6 +24,10 @@ orderRequest newOrder 中同步和异步区别
          StreamPriceReceiver.Instance.PriceChanged += PriceChanged;
          StreamPriceReceiver.Instance.PriceChanged += PriceRecorder.Instance.PriceChangedHandler;
          两个触发事件，能同时触发吗？ 
+        
+        
+ AccountDetails 中每个字段的意义
+        
  
  
  http://xinsheng.huawei.com/cn/index.php?app=forum&mod=Detail&act=index&id=1614985
