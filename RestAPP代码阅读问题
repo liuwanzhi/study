@@ -20,6 +20,12 @@ orderRequest newOrder 中同步和异步区别
  PriceEntity 中的ask 和bid代表什么？
  
  
+ Mainform.cs  InitializeObject()
+         StreamPriceReceiver.Instance.PriceChanged += PriceChanged;
+         StreamPriceReceiver.Instance.PriceChanged += PriceRecorder.Instance.PriceChangedHandler;
+         两个触发事件，能同时触发吗？ 
+ 
+ 
  http://xinsheng.huawei.com/cn/index.php?app=forum&mod=Detail&act=index&id=1614985
  
  
