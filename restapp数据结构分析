@@ -24,6 +24,10 @@ class AccountData  账号实体类
     
     
    界面上已经有菜单，getOrders，现在需要看一下怎么分析相关trader和orders
+   
+   
+   对持仓价格进行分析
+     http://www.cnblogs.com/bradwarden/archive/2012/06/19/2554854.html
     
     
     
