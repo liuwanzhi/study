@@ -1,0 +1,4 @@
+
+1绑定list
+            dataGridViewTradesAnalyis.DataSource = null;
+            dataGridViewTradesAnalyis.DataSource = _tradeAnalysis;
