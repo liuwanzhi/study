@@ -2,3 +2,5 @@
 1绑定list
             dataGridViewTradesAnalyis.DataSource = null;
             dataGridViewTradesAnalyis.DataSource = _tradeAnalysis;
+2 只有添加combox，没有联动效果
+            http://csharp.net-informations.com/datagridview/csharp-datagridview-combobox.htm
