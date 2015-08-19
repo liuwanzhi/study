@@ -1,0 +1,4 @@
+1 docker增加代理
+/etc/sysconfig/docker
+增加 http_proxy=http://186.100.4.131:808
+https_proxy=http://186.100.4.131:808
