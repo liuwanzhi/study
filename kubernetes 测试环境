@@ -1,0 +1,61 @@
+kubernets run hack/test-go.go会自动将代码打包成kube-source.tar.gz然后 通过build下的Dockerfile构建一个container自动进行测试
+由于GFW问题有些包下不下来，现在修改了Dockerfile，主要思路是将原来通过网络安装的程序预先下载下来进行安装
+
+存放的目录为
+
+kubernetes/_output/images/kube-build:。。。
+下载的包主要有 
+git clone https://github.com/golang/toos.git
+etcd-v2.0.0.0-linux-amd64.tar.gz libpopt0_1.14-4_amd64.deb rsync_3.0.3-2_amd64.deb 
+
+修改后的dockerfile为
+FROM kube-build:cross
+MAINTAINER  Joe Beda <jbeda@google.com>
+
+# (set an explicit GOARM of 5 for maximum compatibility)
+ENV GOARM 5
+
+# work around 64MB tmpfs size in Docker 1.6
+ENV TMPDIR /tmp.k8s
+
+# Get the code coverage tool and godep
+#RUN mkdir $TMPDIR && \
+#    go get golang.org/x/tools/cmd/cover github.com/tools/godep
+
+RUN mkdir $TMPDIR
+ADD tools /go/src/golang.org/x/tools
+RUN go install golang.org/x/tools/cmd/cover
+
+# We use rsync to copy some binaries around.  It is faster (0.3s vs. 1.1s) on my
+# machine vs. `install`
+RUN rm -rf /var/lib/apt/lists/
+ADD libpopt0_1.14-4_amd64.deb /root/libpopt0_1.14-4_amd64.deb
+RUN dpkg -i /root/libpopt0_1.14-4_amd64.deb
+ADD rsync_3.0.3-2_amd64.deb /root/rsync_3.0.3-2_amd64.deb
+RUN dpkg -i  /root/rsync_3.0.3-2_amd64.deb
+#RUN apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y rsync
+
+# Download and symlink etcd.  We need this for our integration tests.
+RUN mkdir -p /usr/local/src/etcd
+ #   cd /usr/local/src/etcd 
+
+#    curl -L -O -s https://github.com/coreos/etcd/releases/download/v2.0.0/etcd-v2.0.0-linux-amd64.tar.gz &&\
+COPY ./etcd-v2.0.0-linux-amd64.tar.gz /usr/local/src/etcd/etcd-v2.0.0-linux-amd64.tar.gz
+RUN cd /usr/local/src/etcd
+RUN tar -xzf /usr/local/src/etcd/etcd-v2.0.0-linux-amd64.tar.gz
+RUN ln -s ../src/etcd/etcd-v2.0.0-linux-amd64/etcd /usr/local/bin/
+
+# Mark this as a kube-build container
+RUN touch /kube-build-image
+
+WORKDIR /go/src/k8s.io/kubernetes
+
+# Propagate the git tree version into the build image
+ADD kube-version-defs /kube-version-defs
+ENV KUBE_GIT_VERSION_FILE /kube-version-defs
+
+# Make output from the dockerized build go someplace else
+ENV KUBE_OUTPUT_SUBPATH _output/dockerized
+
+# Upload Kubernetes source
+ADD kube-source.tar.gz /go/src/k8s.io/kubernetes
