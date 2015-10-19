@@ -1,0 +1,45 @@
+1 深入docker资源管理
+视频详细介绍了docker下的资源管理
+http://www.infoq.com/cn/presentations/depth-docker-resource-management
+
+
+
+2 使用K8S进行服务灰度升级 
+http://dockone.io/article/735
+
+3 微服务实践例子 一体化架构和微服务架构
+文章介绍了一个使用微服务改造现有业务的例子
+ http://dockone.io/article/737
+
+4  Docker 1.9.0 RC1 发布下载
+https://github.com/docker/docker/pull/17000
+
+1.9新特性
+主要包括以下 1 user namepspace  
+             2 Better API implementation
+             3 Progress towards a client-side builder
+             4 Progress towards the OCI integration
+详情 https://github.com/docker/docker/wiki/Engine-1.9.0
+
+
+5 容器存储中潜在的挑战和机遇
+ 文章介绍了在容器应用场景下，存储碰到的问题和相应解决方案
+http://storage.chinabyte.com/493/13583993.shtml
+
+
+6 Kubernetes 距管理1000个节点还有多远
+文章介绍了Kubernetes管理大规模节点的相关规划和挑战
+http://www.infoq.com/cn/news/2015/09/Kubernetes-1000
+相关官方blog
+http://blog.kubernetes.io/2015/09/kubernetes-performance-measurements-and.html
+
+
+7 Docker在蚂蚁金融平台的探索与实践
+介绍了蚂蚁金融平台的docker实践
+http://www.infoq.com/cn/articles/docker-in-the-antgroup-cloud-platform
+
+
+8 docker背后的标准化容器执行引擎-runC
+ runC是Docker贡献出来的，按照开放容器格式标准（OCF, Open Container Format）制定的一种具体实现 
+文章从架构和源码层面详细解读这个开源项目的设计思想和实现原理 
+http://www.infoq.com/cn/articles/docker-standard-container-execution-engine-runc?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=articles_link&utm_content=link_text
