@@ -43,3 +43,49 @@ http://www.infoq.com/cn/articles/docker-in-the-antgroup-cloud-platform
  runC是Docker贡献出来的，按照开放容器格式标准（OCF, Open Container Format）制定的一种具体实现 
 文章从架构和源码层面详细解读这个开源项目的设计思想和实现原理 
 http://www.infoq.com/cn/articles/docker-standard-container-execution-engine-runc?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=articles_link&utm_content=link_text
+
+
+
+
+1 Docker新增三大功能特性，增强容器安全
+介绍了容器安全方面的三大改进-支持利用YubiKey进行硬件签名、对Docker Hub中的镜像开始进行安全扫描和支持用户名字空间。
+
+http://www.infoq.com/cn/news/2015/11/Docker-three-improvement
+
+2 实施微服务，我们需要哪些基础框架？
+ 文章介绍了需要哪些基础框架或组件来支持微服务架构。以及这些框架和组件该如何选型
+
+http://www.infoq.com/cn/articles/basis-frameworkto-implement-micro-service
+
+
+3 Docker监控：最佳实践以及cAdvisor和Prometheus监控工具的对比
+文章阐述了“ Docker监控 ”的概况，分享了这方面的最佳实践和Docker stats API的指南，并对比了三个流行的监控方案：cAdvisor、“cAdvisor + InfluxDB + Grafana”以及Prometheus。 
+
+http://www.tuicool.com/articles/aa2uQbj
+
+
+4 Docker 监控实战 通过具体案例介绍了docker的监控方案的设计、实施 
+http://www.d1net.com/cloud/tech/386179.html?utm_source=tuicool&utm_medium=referral
+
+
+5 2015年叫板Docker的7个Unikernel项目 
+随着容器创新方面的热情越来越高涨，一种名为Unikernel的相关技术也开始引起注意。Unikernel又以能够在组件层面干净利落地分离功能而著称，它正带来众多新的方法以部署云服务。 文章介绍了
+今后几个月值得密切关注的几个新兴项目。
+
+http://cloud.51cto.com/art/201512/500455.htm
+
+6 Mesos在去哪儿网的实践之路
+文章介绍了去哪儿网使用Mesos的相关实践 
+
+http://www.infoq.com/cn/articles/practice-of-mosos-in-qunar 
+
+
+7 服务发现的可行方案以及实践案例 
+介绍了服务发现相关模式以及分析了相关模式的优缺点
+
+http://dockone.io/article/771
+
+8 Ubuntu创始人 ：Linux容器将完全颠覆虚拟化
+文章介绍了ubuntu创始人对容器的看法，文章包含了一些虚拟化和容器性能对比数据
+
+http://dockone.io/article/871
